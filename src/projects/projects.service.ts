@@ -6,7 +6,6 @@ import { Project, ProjectDocument } from './schemas/project.schema';
 
 @Injectable()
 export class ProjectsService {
-
    constructor(
       @InjectModel(Project.name) private projectModel:Model<ProjectDocument>
    ){}
@@ -22,6 +21,10 @@ export class ProjectsService {
 
    async update(id:string,projectDto : ProjectDto):Promise<Project>{
       return this.projectModel.findByIdAndUpdate(id,projectDto)
+   }
+
+   async delete(id:string):Promise<Project>{
+      return this.projectModel.findOneAndDelete({_id:id})
    }
    
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ProjectDto } from './dto/project.dto';
 import { ProjectsService } from './projects.service';
 import { Project } from './schemas/project.schema';
@@ -20,6 +20,11 @@ export class ProjectsController {
    @Get()
    findProjects():Promise<Project[]> {
       return this.projectService.findAll()
+   }
+
+   @Delete(':id')
+   deleteProject(@Param('id') id: string): Promise<Project>{
+      return this.projectService.delete(id)
    }
 
 }
