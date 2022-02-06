@@ -1,4 +1,4 @@
-export class CreateProjectDto{
+export class ProjectDto{
    name:String
    description:String
    image: String;
